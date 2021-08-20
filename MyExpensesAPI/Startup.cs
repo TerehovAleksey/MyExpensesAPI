@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -9,20 +10,24 @@ namespace MyExpensesAPI
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddDatabaseContext(Configuration);
-            services.AddServices();
-            services.AddCaching();
-            services.AddCORS();
+            services.AddDatabaseContext(_configuration)
+                .AddServices()
+                .AddCaching()
+                .AddCORS()
+                .AddJwt(_configuration)
+                .AddInfrastructure()
+                .AddValidation();
+            services.AddControllers()
+                .AddFluentValidation();
             services.AddHealthChecks();
             services.AddSwagger();
         }
@@ -31,19 +36,18 @@ namespace MyExpensesAPI
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                // app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyExpensesAPI v1"));
             }
 
+            app.UseCulture();
+            app.UseCustomException();
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
+            app.UseAuthorization();
             app.UseCors("CorsPolicy");
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHealthChecks("/health");
