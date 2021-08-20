@@ -9,20 +9,21 @@ namespace MyExpensesAPI
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDatabaseContext(Configuration);
+            services.AddDatabaseContext(_configuration);
             services.AddServices();
             services.AddCaching();
             services.AddCORS();
+            services.AddJwt(_configuration);
             services.AddHealthChecks();
             services.AddSwagger();
         }
@@ -37,13 +38,10 @@ namespace MyExpensesAPI
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
+            app.UseAuthorization();
             app.UseCors("CorsPolicy");
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHealthChecks("/health");
