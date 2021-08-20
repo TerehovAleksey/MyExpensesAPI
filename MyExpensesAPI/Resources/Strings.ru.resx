@@ -117,7 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ConfirmationRequired" xml:space="preserve">
+    <value>Необходимо подверждение</value>
+  </data>
   <data name="InternalServerError" xml:space="preserve">
     <value>Произошла ошибка сервера.</value>
+  </data>
+  <data name="IsNotAllowed" xml:space="preserve">
+    <value>Не разрешено</value>
+  </data>
+  <data name="Locked" xml:space="preserve">
+    <value>Заблокирован</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Не найдено</value>
   </data>
 </root>

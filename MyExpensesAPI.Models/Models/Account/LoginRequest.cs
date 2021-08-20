@@ -4,14 +4,14 @@ namespace MyExpensesAPI.Models.Account
 {
     public record LoginRequest
     {
-        public LoginRequest(string email, string password)
+        public LoginRequest(string username, string password)
         {
-            Email = email;
+            Username = username;
             Password = password;
         }
 
-        [JsonPropertyName("email")] 
-        public string Email { get; set; }
+        [JsonPropertyName("username")] 
+        public string Username { get; set; }
 
         [JsonPropertyName("password")] 
         public string Password { get; set; }

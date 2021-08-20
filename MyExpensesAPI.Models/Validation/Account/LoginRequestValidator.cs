@@ -7,11 +7,10 @@ namespace MyExpensesAPI.Models.Validation.Account
     {
         public LoginRequestValidator()
         {
-            RuleFor(x => x.Email)
+            RuleFor(x => x.Username)
                 .NotNull()
-                .EmailAddress()
-                .OverridePropertyName("email")
-                .WithName("email");
+                .OverridePropertyName("username")
+                .WithName(Strings.Username);
 
             RuleFor(x => x.Password)
                 .NotNull()

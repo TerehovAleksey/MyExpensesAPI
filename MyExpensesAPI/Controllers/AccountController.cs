@@ -46,36 +46,36 @@ namespace MyExpensesAPI.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            var status = await _signInManager.PasswordSignInAsync(request.Email, request.Password, false, false);
+            var status = await _signInManager.PasswordSignInAsync(request.Username, request.Password, false, false);
 
             if (status.RequiresTwoFactor)
             {
-                return Unauthorized(ErrorDetails.Create(401, "Необходимо подверждение"));
+                return Unauthorized(ErrorDetails.Create(401, Resources.Strings.ConfirmationRequired));
             }
 
             if (status.IsLockedOut)
             {
-                return Unauthorized(ErrorDetails.Create(401, "Заблокирован"));
+                return Unauthorized(ErrorDetails.Create(401, Resources.Strings.Locked));
             }
 
             if (status.IsNotAllowed)
             {
-                return Unauthorized(ErrorDetails.Create(401, "Не разрешено"));
+                return Unauthorized(ErrorDetails.Create(401, Resources.Strings.IsNotAllowed));
             }
 
             if (status.Succeeded)
             {
-                var user = await _userManager.FindByEmailAsync(request.Email);
+                var user = await _userManager.FindByNameAsync(request.Username);
                 var claims = await _userManager.GetClaimsAsync(user);
                 var roles = await _userManager.GetRolesAsync(user);
 
                 var jwtResult = _jwtAuthManager.GenerateTokens(user.UserName, claims.ToArray(), DateTime.Now);
                 _logger.LogInformation($"User [{user.UserName}] logged in the system.");
 
-                return Ok(new LoginResult(user.UserName, roles.First(), jwtResult.AccessToken, jwtResult.RefreshToken.TokenString));
+                return Ok(new LoginResult(user.UserName, roles.FirstOrDefault() ?? string.Empty, jwtResult.AccessToken, jwtResult.RefreshToken.TokenString));
             }
 
-            return Unauthorized(ErrorDetails.Create(401, "Не найдено"));
+            return Unauthorized(ErrorDetails.Create(401, Resources.Strings.NotFound));
         }
 
         [HttpGet("user")]

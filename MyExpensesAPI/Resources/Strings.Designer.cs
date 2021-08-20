@@ -61,11 +61,47 @@ namespace MyExpensesAPI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirmation required.
+        /// </summary>
+        public static string ConfirmationRequired {
+            get {
+                return ResourceManager.GetString("ConfirmationRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to InternalServerError..
         /// </summary>
         public static string InternalServerError {
             get {
                 return ResourceManager.GetString("InternalServerError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is not allowed.
+        /// </summary>
+        public static string IsNotAllowed {
+            get {
+                return ResourceManager.GetString("IsNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Locked.
+        /// </summary>
+        public static string Locked {
+            get {
+                return ResourceManager.GetString("Locked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not found.
+        /// </summary>
+        public static string NotFound {
+            get {
+                return ResourceManager.GetString("NotFound", resourceCulture);
             }
         }
     }
