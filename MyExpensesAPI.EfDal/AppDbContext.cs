@@ -2,8 +2,11 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MyExpensesAPI.Domain;
+using MyExpensesAPI.Domain.Interfaces;
 using MyExpensesAPI.EfDal.Configurations;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace MyExpensesAPI.EfDal
 {
@@ -49,6 +52,24 @@ namespace MyExpensesAPI.EfDal
             builder.ApplyConfiguration(new UsersCurrencyConfiguration());
 
             #endregion Configurations
+        }
+
+        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
+        {
+            FakeDelete();
+            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+        }
+
+        private void FakeDelete()
+        {
+            foreach (var entry in ChangeTracker.Entries())
+            {
+                if (entry.Entity is IFakeDelete fakeDelete && entry.State == EntityState.Deleted)
+                {
+                    fakeDelete.IsDeleted = true;
+                    entry.State = EntityState.Modified;
+                }
+            }
         }
     }
 }
