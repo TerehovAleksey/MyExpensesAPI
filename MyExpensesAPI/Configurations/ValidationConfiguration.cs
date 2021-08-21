@@ -2,8 +2,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using MyExpensesAPI.Models.Account;
 using MyExpensesAPI.Models.Models.Category;
+using MyExpensesAPI.Models.Models.Currency;
 using MyExpensesAPI.Models.Validation.Account;
 using MyExpensesAPI.Models.Validation.Category;
+using MyExpensesAPI.Models.Validation.Currency;
 
 namespace MyExpensesAPI.Configurations
 {
@@ -15,6 +17,7 @@ namespace MyExpensesAPI.Configurations
             services.AddTransient<IValidator<RegisterRequest>, RegisterRequestValidator>();
 
             services.AddTransient<IValidator<CategoryApiModel>, CategoryApiModelValidator>();
+            services.AddTransient<IValidator<CurrencyCreateApiModel>, CurrencyCreateApiModelValidator>();
 
             return services;
         }

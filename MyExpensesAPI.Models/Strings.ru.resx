@@ -126,6 +126,9 @@
   <data name="Password" xml:space="preserve">
     <value>Пароль</value>
   </data>
+  <data name="Rate" xml:space="preserve">
+    <value>Курс</value>
+  </data>
   <data name="Username" xml:space="preserve">
     <value>Имя пользователя</value>
   </data>

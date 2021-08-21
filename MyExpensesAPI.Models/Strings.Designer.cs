@@ -88,6 +88,15 @@ namespace MyExpensesAPI.Models {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rate.
+        /// </summary>
+        public static string Rate {
+            get {
+                return ResourceManager.GetString("Rate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Username.
         /// </summary>
         public static string Username {
