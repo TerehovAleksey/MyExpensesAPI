@@ -10,9 +10,4 @@
     <ProjectReference Include="..\MyExpensesAPI.Models\MyExpensesAPI.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Implementation\" />
-  </ItemGroup>
-
 </Project>

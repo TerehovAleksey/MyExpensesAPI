@@ -12,7 +12,7 @@ namespace MyExpensesAPI.Domain
 
 
         public virtual ICollection<UsersCurrency> UsersCurrencies {  get; set; }
-        public virtual ICollection<ExpenceCategory> ExpenceCategories {  get; set; }
+        public virtual ICollection<ExpenseCategory> ExpenseCategories {  get; set; }
         public virtual ICollection<IncomeCategory> IncomeCategories {  get; set; }
     }
 }

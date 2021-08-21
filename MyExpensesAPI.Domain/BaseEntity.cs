@@ -1,8 +1,9 @@
-﻿using System;
+﻿using MyExpensesAPI.Domain.Interfaces;
+using System;
 
 namespace MyExpensesAPI.Domain
 {
-    public class BaseEntity
+    public class BaseEntity : IFakeDelete
     {
         public Guid Id { get; set; }
         public DateTime DateOfCreation { get; set; }

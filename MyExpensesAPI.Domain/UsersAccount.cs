@@ -12,6 +12,6 @@ namespace MyExpensesAPI.Domain
 
         public decimal Balance { get; set; }
 
-        public virtual ICollection<ExpenceJournal> ExpenceJournals { get; set; }
+        public virtual ICollection<ExpenseJournal> ExpenseJournals { get; set; }
     }
 }

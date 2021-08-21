@@ -13,8 +13,8 @@ namespace MyExpensesAPI.EfDal.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    DateOfCreation = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
-                    DateOfChange = table.Column<DateTime>(type: "datetime", nullable: true),
+                    DateOfCreation = table.Column<DateTime>(type: "datetime2(7)", nullable: false, defaultValueSql: "getdate()"),
+                    DateOfChange = table.Column<DateTime>(type: "datetime2(7)", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
@@ -28,8 +28,8 @@ namespace MyExpensesAPI.EfDal.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    DateOfCreation = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
-                    DateOfChange = table.Column<DateTime>(type: "datetime", nullable: true),
+                    DateOfCreation = table.Column<DateTime>(type: "datetime2(7)", nullable: false, defaultValueSql: "getdate()"),
+                    DateOfChange = table.Column<DateTime>(type: "datetime2(7)", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
@@ -56,8 +56,8 @@ namespace MyExpensesAPI.EfDal.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
                     LastLoginDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
@@ -101,21 +101,21 @@ namespace MyExpensesAPI.EfDal.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ExpenceCategories",
+                name: "ExpenseCategories",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    DateOfCreation = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
-                    DateOfChange = table.Column<DateTime>(type: "datetime", nullable: true),
+                    DateOfCreation = table.Column<DateTime>(type: "datetime2(7)", nullable: false, defaultValueSql: "getdate()"),
+                    DateOfChange = table.Column<DateTime>(type: "datetime2(7)", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ExpenceCategories", x => x.Id);
+                    table.PrimaryKey("PK_ExpenseCategories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ExpenceCategories_Users_UserId",
+                        name: "FK_ExpenseCategories_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -129,8 +129,8 @@ namespace MyExpensesAPI.EfDal.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    DateOfCreation = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
-                    DateOfChange = table.Column<DateTime>(type: "datetime", nullable: true),
+                    DateOfCreation = table.Column<DateTime>(type: "datetime2(7)", nullable: false, defaultValueSql: "getdate()"),
+                    DateOfChange = table.Column<DateTime>(type: "datetime2(7)", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
@@ -218,8 +218,8 @@ namespace MyExpensesAPI.EfDal.Migrations
                     Rate = table.Column<decimal>(type: "money", nullable: false),
                     IsDefault = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     CurrencyTypeId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    DateOfCreation = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
-                    DateOfChange = table.Column<DateTime>(type: "datetime", nullable: true),
+                    DateOfCreation = table.Column<DateTime>(type: "datetime2(7)", nullable: false, defaultValueSql: "getdate()"),
+                    DateOfChange = table.Column<DateTime>(type: "datetime2(7)", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
@@ -267,8 +267,8 @@ namespace MyExpensesAPI.EfDal.Migrations
                     AccountTypeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UsersCurrencyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Balance = table.Column<decimal>(type: "money", nullable: false),
-                    DateOfCreation = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
-                    DateOfChange = table.Column<DateTime>(type: "datetime", nullable: true),
+                    DateOfCreation = table.Column<DateTime>(type: "datetime2(7)", nullable: false, defaultValueSql: "getdate()"),
+                    DateOfChange = table.Column<DateTime>(type: "datetime2(7)", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
@@ -289,29 +289,29 @@ namespace MyExpensesAPI.EfDal.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ExpenceJournals",
+                name: "ExpenseJournals",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UsersAccountId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ExpenceCategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ExpenseCategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Value = table.Column<decimal>(type: "money", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    DateOfCreation = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
-                    DateOfChange = table.Column<DateTime>(type: "datetime", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    DateOfCreation = table.Column<DateTime>(type: "datetime2(7)", nullable: false, defaultValueSql: "getdate()"),
+                    DateOfChange = table.Column<DateTime>(type: "datetime2(7)", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ExpenceJournals", x => x.Id);
+                    table.PrimaryKey("PK_ExpenseJournals", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ExpenceJournals_ExpenceCategories_ExpenceCategoryId",
-                        column: x => x.ExpenceCategoryId,
-                        principalTable: "ExpenceCategories",
+                        name: "FK_ExpenseJournals_ExpenseCategories_ExpenseCategoryId",
+                        column: x => x.ExpenseCategoryId,
+                        principalTable: "ExpenseCategories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ExpenceJournals_UsersAccounts_UsersAccountId",
+                        name: "FK_ExpenseJournals_UsersAccounts_UsersAccountId",
                         column: x => x.UsersAccountId,
                         principalTable: "UsersAccounts",
                         principalColumn: "Id",
@@ -326,9 +326,9 @@ namespace MyExpensesAPI.EfDal.Migrations
                     UsersAccountId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IncomeCategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Value = table.Column<decimal>(type: "money", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    DateOfCreation = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()"),
-                    DateOfChange = table.Column<DateTime>(type: "datetime", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    DateOfCreation = table.Column<DateTime>(type: "datetime2(7)", nullable: false, defaultValueSql: "getdate()"),
+                    DateOfChange = table.Column<DateTime>(type: "datetime2(7)", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
@@ -349,18 +349,18 @@ namespace MyExpensesAPI.EfDal.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ExpenceCategories_UserId",
-                table: "ExpenceCategories",
+                name: "IX_ExpenseCategories_UserId",
+                table: "ExpenseCategories",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ExpenceJournals_ExpenceCategoryId",
-                table: "ExpenceJournals",
-                column: "ExpenceCategoryId");
+                name: "IX_ExpenseJournals_ExpenseCategoryId",
+                table: "ExpenseJournals",
+                column: "ExpenseCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ExpenceJournals_UsersAccountId",
-                table: "ExpenceJournals",
+                name: "IX_ExpenseJournals_UsersAccountId",
+                table: "ExpenseJournals",
                 column: "UsersAccountId");
 
             migrationBuilder.CreateIndex(
@@ -441,7 +441,7 @@ namespace MyExpensesAPI.EfDal.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ExpenceJournals");
+                name: "ExpenseJournals");
 
             migrationBuilder.DropTable(
                 name: "IncomeJournals");
@@ -462,7 +462,7 @@ namespace MyExpensesAPI.EfDal.Migrations
                 name: "UserTokens");
 
             migrationBuilder.DropTable(
-                name: "ExpenceCategories");
+                name: "ExpenseCategories");
 
             migrationBuilder.DropTable(
                 name: "IncomeCategories");
