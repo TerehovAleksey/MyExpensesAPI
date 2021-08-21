@@ -10,7 +10,7 @@ using MyExpensesAPI.EfDal;
 namespace MyExpensesAPI.EfDal.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210819145354_init")]
+    [Migration("20210821093224_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -129,11 +129,11 @@ namespace MyExpensesAPI.EfDal.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("DateOfChange")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime2(7)");
 
                     b.Property<DateTime>("DateOfCreation")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
+                        .HasColumnType("datetime2(7)")
                         .HasDefaultValueSql("getdate()");
 
                     b.Property<bool>("IsDeleted")
@@ -158,11 +158,11 @@ namespace MyExpensesAPI.EfDal.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("DateOfChange")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime2(7)");
 
                     b.Property<DateTime>("DateOfCreation")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
+                        .HasColumnType("datetime2(7)")
                         .HasDefaultValueSql("getdate()");
 
                     b.Property<bool>("IsDeleted")
@@ -180,18 +180,18 @@ namespace MyExpensesAPI.EfDal.Migrations
                     b.ToTable("CurrencyTypes");
                 });
 
-            modelBuilder.Entity("MyExpensesAPI.Domain.ExpenceCategory", b =>
+            modelBuilder.Entity("MyExpensesAPI.Domain.ExpenseCategory", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("DateOfChange")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime2(7)");
 
                     b.Property<DateTime>("DateOfCreation")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
+                        .HasColumnType("datetime2(7)")
                         .HasDefaultValueSql("getdate()");
 
                     b.Property<bool>("IsDeleted")
@@ -211,29 +211,28 @@ namespace MyExpensesAPI.EfDal.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ExpenceCategories");
+                    b.ToTable("ExpenseCategories");
                 });
 
-            modelBuilder.Entity("MyExpensesAPI.Domain.ExpenceJournal", b =>
+            modelBuilder.Entity("MyExpensesAPI.Domain.ExpenseJournal", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("DateOfChange")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime2(7)");
 
                     b.Property<DateTime>("DateOfCreation")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
+                        .HasColumnType("datetime2(7)")
                         .HasDefaultValueSql("getdate()");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<Guid>("ExpenceCategoryId")
+                    b.Property<Guid>("ExpenseCategoryId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
@@ -249,11 +248,11 @@ namespace MyExpensesAPI.EfDal.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ExpenceCategoryId");
+                    b.HasIndex("ExpenseCategoryId");
 
                     b.HasIndex("UsersAccountId");
 
-                    b.ToTable("ExpenceJournals");
+                    b.ToTable("ExpenseJournals");
                 });
 
             modelBuilder.Entity("MyExpensesAPI.Domain.IncomeCategory", b =>
@@ -263,11 +262,11 @@ namespace MyExpensesAPI.EfDal.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("DateOfChange")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime2(7)");
 
                     b.Property<DateTime>("DateOfCreation")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
+                        .HasColumnType("datetime2(7)")
                         .HasDefaultValueSql("getdate()");
 
                     b.Property<bool>("IsDeleted")
@@ -297,15 +296,14 @@ namespace MyExpensesAPI.EfDal.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("DateOfChange")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime2(7)");
 
                     b.Property<DateTime>("DateOfCreation")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
+                        .HasColumnType("datetime2(7)")
                         .HasDefaultValueSql("getdate()");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
@@ -383,7 +381,6 @@ namespace MyExpensesAPI.EfDal.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
@@ -391,7 +388,6 @@ namespace MyExpensesAPI.EfDal.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
@@ -457,11 +453,11 @@ namespace MyExpensesAPI.EfDal.Migrations
                         .HasColumnType("money");
 
                     b.Property<DateTime?>("DateOfChange")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime2(7)");
 
                     b.Property<DateTime>("DateOfCreation")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
+                        .HasColumnType("datetime2(7)")
                         .HasDefaultValueSql("getdate()");
 
                     b.Property<bool>("IsDeleted")
@@ -491,11 +487,11 @@ namespace MyExpensesAPI.EfDal.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("DateOfChange")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime2(7)");
 
                     b.Property<DateTime>("DateOfCreation")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
+                        .HasColumnType("datetime2(7)")
                         .HasDefaultValueSql("getdate()");
 
                     b.Property<bool>("IsDefault")
@@ -574,30 +570,30 @@ namespace MyExpensesAPI.EfDal.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MyExpensesAPI.Domain.ExpenceCategory", b =>
+            modelBuilder.Entity("MyExpensesAPI.Domain.ExpenseCategory", b =>
                 {
                     b.HasOne("MyExpensesAPI.Domain.User", "User")
-                        .WithMany("ExpenceCategories")
+                        .WithMany("ExpenseCategories")
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MyExpensesAPI.Domain.ExpenceJournal", b =>
+            modelBuilder.Entity("MyExpensesAPI.Domain.ExpenseJournal", b =>
                 {
-                    b.HasOne("MyExpensesAPI.Domain.ExpenceCategory", "ExpenceCategory")
-                        .WithMany("ExpenceJournals")
-                        .HasForeignKey("ExpenceCategoryId")
+                    b.HasOne("MyExpensesAPI.Domain.ExpenseCategory", "ExpenseCategory")
+                        .WithMany("ExpenseJournals")
+                        .HasForeignKey("ExpenseCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MyExpensesAPI.Domain.UsersAccount", "UsersAccount")
-                        .WithMany("ExpenceJournals")
+                        .WithMany("ExpenseJournals")
                         .HasForeignKey("UsersAccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ExpenceCategory");
+                    b.Navigation("ExpenseCategory");
 
                     b.Navigation("UsersAccount");
                 });
@@ -674,9 +670,9 @@ namespace MyExpensesAPI.EfDal.Migrations
                     b.Navigation("UsersCurrencies");
                 });
 
-            modelBuilder.Entity("MyExpensesAPI.Domain.ExpenceCategory", b =>
+            modelBuilder.Entity("MyExpensesAPI.Domain.ExpenseCategory", b =>
                 {
-                    b.Navigation("ExpenceJournals");
+                    b.Navigation("ExpenseJournals");
                 });
 
             modelBuilder.Entity("MyExpensesAPI.Domain.IncomeCategory", b =>
@@ -686,7 +682,7 @@ namespace MyExpensesAPI.EfDal.Migrations
 
             modelBuilder.Entity("MyExpensesAPI.Domain.User", b =>
                 {
-                    b.Navigation("ExpenceCategories");
+                    b.Navigation("ExpenseCategories");
 
                     b.Navigation("IncomeCategories");
 
@@ -695,7 +691,7 @@ namespace MyExpensesAPI.EfDal.Migrations
 
             modelBuilder.Entity("MyExpensesAPI.Domain.UsersAccount", b =>
                 {
-                    b.Navigation("ExpenceJournals");
+                    b.Navigation("ExpenseJournals");
                 });
 #pragma warning restore 612, 618
         }

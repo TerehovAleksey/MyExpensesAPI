@@ -67,6 +67,8 @@ namespace MyExpensesAPI.Controllers
             {
                 var user = await _userManager.FindByNameAsync(request.Username);
                 var claims = await _userManager.GetClaimsAsync(user);
+                claims.Add(new Claim(ClaimTypes.Name, request.Username));
+                claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
                 var roles = await _userManager.GetRolesAsync(user);
 
                 var jwtResult = _jwtAuthManager.GenerateTokens(user.UserName, claims.ToArray(), DateTime.Now);

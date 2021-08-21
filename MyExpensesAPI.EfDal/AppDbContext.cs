@@ -11,8 +11,8 @@ namespace MyExpensesAPI.EfDal
     {
         public virtual DbSet<AccountType> AccountTypes { get; set; }
         public virtual DbSet<CurrencyType> CurrencyTypes { get; set; }
-        public virtual DbSet<ExpenceCategory> ExpenceCategories { get; set; }
-        public virtual DbSet<ExpenceJournal> ExpenceJournals { get; set; }
+        public virtual DbSet<ExpenseCategory> ExpenseCategories { get; set; }
+        public virtual DbSet<ExpenseJournal> ExpenseJournals { get; set; }
         public virtual DbSet<IncomeCategory> IncomeCategories { get; set; }
         public virtual DbSet<IncomeJournal> IncomeJournals { get; set; }
         public virtual DbSet<UsersAccount> UsersAccounts { get; set; }

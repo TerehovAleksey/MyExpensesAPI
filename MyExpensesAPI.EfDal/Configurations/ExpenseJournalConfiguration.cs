@@ -4,11 +4,11 @@ using MyExpensesAPI.Domain;
 
 namespace MyExpensesAPI.EfDal.Configurations
 {
-    public class ExpenseJournalConfiguration : IEntityTypeConfiguration<ExpenceJournal>
+    public class ExpenseJournalConfiguration : IEntityTypeConfiguration<ExpenseJournal>
     {
-        public void Configure(EntityTypeBuilder<ExpenceJournal> builder)
+        public void Configure(EntityTypeBuilder<ExpenseJournal> builder)
         {
-            builder.ToTable("ExpenceJournals")
+            builder.ToTable("ExpenseJournals")
                 .HasKey(x => x.Id);
 
             builder.Property(x => x.DateOfCreation)
