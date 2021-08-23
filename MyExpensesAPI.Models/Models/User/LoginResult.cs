@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace MyExpensesAPI.Models.Account
+namespace MyExpensesAPI.Models.User
 {
     public record LoginResult
     {

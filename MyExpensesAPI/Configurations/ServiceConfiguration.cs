@@ -11,6 +11,7 @@ namespace MyExpensesAPI.Configurations
             //TODO: сервисы тут
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<ICurrencyService, CurrencyService>();
+            services.AddTransient<IAccountService, AccountService>();
 
             return services;
         }

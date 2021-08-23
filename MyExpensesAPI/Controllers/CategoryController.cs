@@ -47,6 +47,7 @@ namespace MyExpensesAPI.Controllers
         {
             if (string.IsNullOrWhiteSpace(name))
             {
+                _logger.LogInformation($"User [{User.Identity.Name}] tried to create a category with name [{name}].");
                 return BadRequest();
             }
 
@@ -90,6 +91,12 @@ namespace MyExpensesAPI.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<CategoryApiModel>> CreateIncomeCategoryAsync([FromBody] string name)
         {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                _logger.LogInformation($"User [{User.Identity.Name}] tried to create a category with name [{name}].");
+                return BadRequest();
+            }
+
             var userId = _userManager.GetUserId(User);
             var result = await _categoryService.CreateIncomeCategoryAsync(new Guid(userId), name);
             _logger.LogInformation($"User [{User.Identity.Name}] created a category [{result.Name}].");
