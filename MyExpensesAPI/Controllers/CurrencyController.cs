@@ -16,11 +16,11 @@ namespace MyExpensesAPI.Controllers
     [Route(WebApiRoutes.API_CURRENCY)]
     public class CurrencyController : ControllerBase
     {
-        private readonly ILogger<CategoryController> _logger;
+        private readonly ILogger<CurrencyController> _logger;
         private readonly ICurrencyService _currencyService;
         private readonly UserManager<User> _userManager;
 
-        public CurrencyController(ILogger<CategoryController> logger, ICurrencyService currencyService, UserManager<User> userManager)
+        public CurrencyController(ILogger<CurrencyController> logger, ICurrencyService currencyService, UserManager<User> userManager)
         {
             _logger = logger;
             _currencyService = currencyService;
@@ -35,10 +35,12 @@ namespace MyExpensesAPI.Controllers
         {
             if (string.IsNullOrWhiteSpace(name))
             {
+                _logger.LogInformation($"User [{User.Identity.Name}] tried to create a currency type with name [{name}].");
                 return BadRequest();
             }
 
             var result = await _currencyService.CreateCurrencyTypeAsync(name);
+            _logger.LogInformation($"User [{User.Identity.Name}] created a currency type [{result.Name}].");
             return Ok(result);
         }
 
@@ -60,6 +62,7 @@ namespace MyExpensesAPI.Controllers
         {
             var userId = _userManager.GetUserId(User);
             var result = await _currencyService.CreateUserCurrencyAsync(model, new Guid(userId));
+            _logger.LogInformation($"User [{User.Identity.Name}] created a user currency with id [{result.Id}].");
             return Ok(result);
         }
     }

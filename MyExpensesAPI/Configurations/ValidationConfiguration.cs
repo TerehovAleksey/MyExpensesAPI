@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
-using MyExpensesAPI.Models.Account;
+using MyExpensesAPI.Models.User;
 using MyExpensesAPI.Models.Models.Category;
 using MyExpensesAPI.Models.Models.Currency;
-using MyExpensesAPI.Models.Validation.Account;
+using MyExpensesAPI.Models.Validation.User;
 using MyExpensesAPI.Models.Validation.Category;
 using MyExpensesAPI.Models.Validation.Currency;
 

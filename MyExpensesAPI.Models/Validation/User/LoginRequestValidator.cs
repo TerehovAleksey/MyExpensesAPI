@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using MyExpensesAPI.Models.Account;
+using MyExpensesAPI.Models.User;
 
-namespace MyExpensesAPI.Models.Validation.Account
+namespace MyExpensesAPI.Models.Validation.User
 {
     public class LoginRequestValidator : AbstractValidator<LoginRequest>, IValidator<LoginRequest>
     {
