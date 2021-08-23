@@ -7,6 +7,31 @@
         mc:Ignorable="d"
         Title="MyExpenses" Height="450" Width="800">
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0"
+                    Margin="5">
+            <Label Content="Login:"/>
+            <TextBox Text="{Binding Login}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1"
+                    Margin="5">
+            <Label Content="Password:"/>
+            <TextBox Text="{Binding Password}"/>
+        </StackPanel>
+        <Button Grid.Row="2"
+                Content="Login"
+                HorizontalAlignment="Center"
+                Width="300"
+                Height="30"
+                Margin="0,0,0,10"
+                Command="{Binding LoginCommand}"/>
+        <Button Grid.Row="3" Command="{Binding GetAccountTypesCommand}" Content="AccountTypes"/>
+        <ListView Grid.Row="4" ItemsSource="{Binding AccountTypes}"/>
     </Grid>
 </Window>

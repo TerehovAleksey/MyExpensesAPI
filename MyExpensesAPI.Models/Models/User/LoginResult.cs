@@ -13,6 +13,11 @@ namespace MyExpensesAPI.Models.User
             RefreshToken = refreshToken;
         }
 
+        public LoginResult()
+        {
+
+        }
+
         [JsonPropertyName("username")] 
         public string UserName { get; set; }
 

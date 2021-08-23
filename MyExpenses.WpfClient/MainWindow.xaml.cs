@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using MyExpenses.WpfClient.ViewModels;
+using System.Windows;
 
 namespace MyExpenses.WpfClient
 {
@@ -7,6 +8,7 @@ namespace MyExpenses.WpfClient
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = DI.Get<MainWindowViewModel>();
         }
     }
 }

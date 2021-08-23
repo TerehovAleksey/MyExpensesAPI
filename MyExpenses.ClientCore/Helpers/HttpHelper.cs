@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyExpenses.ClientCore.Helpers
 {
-    public class HttpHelper
+    public class HttpHelper : IHttpHelper
     {
         private readonly string _baseUrl;
         private readonly string _token;
