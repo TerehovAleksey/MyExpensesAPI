@@ -8,10 +8,10 @@ namespace MyExpensesAPI.Configurations
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            //TODO: сервисы тут
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<ICurrencyService, CurrencyService>();
             services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<IJournalService, JournalService>();
 
             return services;
         }
