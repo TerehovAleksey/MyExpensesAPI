@@ -7,6 +7,7 @@ using MyExpensesAPI.Domain;
 using MyExpensesAPI.Models.Models.Currency;
 using MyExpensesAPI.Services.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MyExpensesAPI.Controllers
@@ -47,7 +48,7 @@ namespace MyExpensesAPI.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<ActionResult<CurrencyApiModel>> GetUserCurrenciesAsync()
+        public async Task<ActionResult<IEnumerable<CurrencyApiModel>>> GetUserCurrenciesAsync()
         {
             var userId = _userManager.GetUserId(User);
             var result = await _currencyService.GetUserCurrenciesAsync(new Guid(userId));
