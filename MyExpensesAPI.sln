@@ -3,15 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyExpensesAPI", "MyExpensesAPI\MyExpensesAPI.csproj", "{425C26B9-A0A0-4511-9622-7A28ED088215}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyExpensesAPI", "MyExpensesAPI\MyExpensesAPI.csproj", "{425C26B9-A0A0-4511-9622-7A28ED088215}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyExpensesAPI.Domain", "MyExpensesAPI.Domain\MyExpensesAPI.Domain.csproj", "{04EE6212-381B-4584-85F4-D7A2B26C48D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyExpensesAPI.Domain", "MyExpensesAPI.Domain\MyExpensesAPI.Domain.csproj", "{04EE6212-381B-4584-85F4-D7A2B26C48D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyExpensesAPI.EfDal", "MyExpensesAPI.EfDal\MyExpensesAPI.EfDal.csproj", "{D716B424-6790-4772-89E4-65F75A8E2547}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyExpensesAPI.EfDal", "MyExpensesAPI.EfDal\MyExpensesAPI.EfDal.csproj", "{D716B424-6790-4772-89E4-65F75A8E2547}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyExpensesAPI.Services", "MyExpensesAPI.Services\MyExpensesAPI.Services.csproj", "{E7F0ADA2-5991-426D-B522-EE990A9992DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyExpensesAPI.Services", "MyExpensesAPI.Services\MyExpensesAPI.Services.csproj", "{E7F0ADA2-5991-426D-B522-EE990A9992DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyExpensesAPI.Models", "MyExpensesAPI.Models\MyExpensesAPI.Models.csproj", "{0F4C54FF-B32A-4B47-A0F4-2374503B1A50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyExpensesAPI.Models", "MyExpensesAPI.Models\MyExpensesAPI.Models.csproj", "{0F4C54FF-B32A-4B47-A0F4-2374503B1A50}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{768EADF5-30A4-49AC-812C-FCA572CF73B0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wpf", "Wpf", "{6A1C403A-F19B-4BF6-A618-E19E9CB428BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyExpenses.WpfClient", "MyExpenses.WpfClient\MyExpenses.WpfClient.csproj", "{2E5CEE6F-80D1-4BAD-A410-6F5D66C3FD1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyExpenses.ClientCore", "MyExpenses.ClientCore\MyExpenses.ClientCore.csproj", "{AD32AA87-E023-464A-8CE0-2B8B0F5B240D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,9 +47,22 @@ Global
 		{0F4C54FF-B32A-4B47-A0F4-2374503B1A50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F4C54FF-B32A-4B47-A0F4-2374503B1A50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F4C54FF-B32A-4B47-A0F4-2374503B1A50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E5CEE6F-80D1-4BAD-A410-6F5D66C3FD1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E5CEE6F-80D1-4BAD-A410-6F5D66C3FD1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E5CEE6F-80D1-4BAD-A410-6F5D66C3FD1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E5CEE6F-80D1-4BAD-A410-6F5D66C3FD1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD32AA87-E023-464A-8CE0-2B8B0F5B240D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD32AA87-E023-464A-8CE0-2B8B0F5B240D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD32AA87-E023-464A-8CE0-2B8B0F5B240D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD32AA87-E023-464A-8CE0-2B8B0F5B240D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6A1C403A-F19B-4BF6-A618-E19E9CB428BB} = {768EADF5-30A4-49AC-812C-FCA572CF73B0}
+		{2E5CEE6F-80D1-4BAD-A410-6F5D66C3FD1F} = {6A1C403A-F19B-4BF6-A618-E19E9CB428BB}
+		{AD32AA87-E023-464A-8CE0-2B8B0F5B240D} = {768EADF5-30A4-49AC-812C-FCA572CF73B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F26219D-68A0-4069-932A-2CBE8B514104}
