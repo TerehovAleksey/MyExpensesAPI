@@ -5,8 +5,37 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MyExpenses.WpfClient.Views"
              mc:Ignorable="d" 
+             SnapsToDevicePixels="True"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock Grid.Row="0" Text="Login" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+    <Grid Background="Transparent">
+        <Border Height="330"
+                Width="300"
+                CornerRadius="10"
+                BorderThickness="1"
+                BorderBrush="{StaticResource PrimaryBrush}"
+                Padding="10"
+                Background="{StaticResource BackgroundLightBrush}">
+            <StackPanel Orientation="Vertical">
+                <Image Source="/Resources/Images/logo.png"/>
+                <Label Content="Login:" />
+                <TextBox />
+                <Label Content="Password:" />
+                <TextBox />
+                <Button Style="{StaticResource PrimaryButton}"
+                        Content="Enter" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0"
+                            Style="{StaticResource TextButton}"
+                            Content="Settings" />
+                    <Button Grid.Column="1"
+                            Style="{StaticResource TextButton}"
+                            Content="Register" />
+                </Grid>
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>
