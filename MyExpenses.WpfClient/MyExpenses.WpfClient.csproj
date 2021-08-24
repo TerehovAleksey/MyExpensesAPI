@@ -5,7 +5,24 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <MinimumPlatformVersion>7.0</MinimumPlatformVersion>
+    <ApplicationIcon></ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Fonts\fontawesome-webfont.ttf" />
+    <None Remove="Resources\Fonts\Lato-Bold.ttf" />
+    <None Remove="Resources\Fonts\Lato-Light.ttf" />
+    <None Remove="Resources\Fonts\Lato-Medium.ttf" />
+    <None Remove="Resources\Fonts\Lato-Regular.ttf" />
+    <None Remove="Resources\Fonts\Lato-Thin.ttf" />
+    <None Remove="Resources\Images\background.jpg" />
+    <None Remove="Resources\Images\icon-t.ico" />
+    <None Remove="Resources\Images\icon-t.png" />
+    <None Remove="Resources\Images\icon.ico" />
+    <None Remove="Resources\Images\icon.png" />
+    <None Remove="Resources\Images\logo.png" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="6.2.0" />
@@ -16,6 +33,33 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyExpenses.ClientCore\MyExpenses.ClientCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Fonts\fontawesome-webfont.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Lato-Bold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Lato-Light.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Lato-Medium.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Lato-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Lato-Thin.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\background.jpg" />
+    <Resource Include="Resources\Images\icon-t.ico" />
+    <Resource Include="Resources\Images\icon-t.png" />
+    <Resource Include="Resources\Images\icon.ico" />
+    <Resource Include="Resources\Images\icon.png" />
+    <Resource Include="Resources\Images\logo.png" />
   </ItemGroup>
 
 </Project>

@@ -1,55 +1,67 @@
-﻿using MyExpenses.ClientCore.Repository.Interfaces;
-using MyExpenses.WpfClient.Helpers;
-using MyExpenses.WpfClient.Services;
-using MyExpensesAPI.Models.Models.Account;
-using MyExpensesAPI.Models.User;
-using System;
-using System.Collections.ObjectModel;
+﻿using MyExpenses.WpfClient.Helpers;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MyExpenses.WpfClient.ViewModels
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel : BaseViewModel
     {
-        private readonly IAccountService _accountService;
-        private readonly IUserService _userService;
-        private readonly ISettingsService _settingsService;
+        private readonly Window _window;
 
-        public ICommand GetAccountTypesCommand { get; set; }
-        public ICommand LoginCommand { get; set; }
-        public ObservableCollection<AccountTypeApiModel> AccountTypes { get; private set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
+        private const int RESIZE_BORDER = 6;
+        private const int OUTER_MARGIN_SIZE = 10;
+        private const int WINDOW_RADIUS = 10;
+        private const int TITLE_HEIGHT = 32;
+        private double WINDOW_MIN_HEIGHT = 400;
+        private double WINDOW_MIN_WIDTH = 400;
+        private const int INNER_CONTENT_PADDING = 0;
+        private const string TITLE = "MONEYNET";
 
-        public MainWindowViewModel(IAccountService accountService, IUserService userService, ISettingsService settingsService)
+        private readonly WindowDockPosition dockPosition;
+
+        public int TitleHeight => TITLE_HEIGHT;
+        public string Title => TITLE;
+
+        private bool Bordless => _window.WindowState == WindowState.Maximized || dockPosition != WindowDockPosition.Undocked;
+        private int ResizeBorder => Bordless ? 0 : RESIZE_BORDER;
+        private int OuterMarginSize => _window.WindowState == WindowState.Maximized ? 0 : OUTER_MARGIN_SIZE;
+        private int WindowRadius => _window.WindowState == WindowState.Maximized ? 0 : WINDOW_RADIUS;
+        public GridLength TitleHeightGridLength => new GridLength(TitleHeight + ResizeBorder);
+        public Thickness ResizeBorderThickness => new Thickness(ResizeBorder + OuterMarginSize);
+        public Thickness OuterMarginSizeThickness => new Thickness(OuterMarginSize);
+        public Thickness InnerContentPadding => new Thickness(INNER_CONTENT_PADDING);
+        public CornerRadius WindowCornerRadius => new CornerRadius(WindowRadius);
+        public double WindowMinimumHeight => WINDOW_MIN_HEIGHT;
+        public double WindowMinimumWidth => WINDOW_MIN_WIDTH;
+
+        public ICommand MinimizeCommand { get; set; }
+        public ICommand MaximizeCommand { get; set; }
+        public ICommand CloseCommand { get; set; }
+        public ICommand MenuCommand { get; set; }
+
+        public MainWindowViewModel(Window window)
         {
-            _accountService = accountService;
-            _userService = userService;
-            _settingsService = settingsService;
+            _window = window;
+            _window.StateChanged += (s, e) =>
+            {
+                OnPropertyChanged(nameof(ResizeBorderThickness));
+                OnPropertyChanged(nameof(OuterMarginSizeThickness));
+                OnPropertyChanged(nameof(WindowCornerRadius));
+            };
 
-            LoginCommand = new RelayCommand(LoginExecute);
-            GetAccountTypesCommand = new RelayCommand(GetAccountTypesExecute);
-            AccountTypes = new ObservableCollection<AccountTypeApiModel>();
+            MinimizeCommand = new RelayCommand(() => window.WindowState = WindowState.Minimized);
+            MaximizeCommand = new RelayCommand(() => window.WindowState ^= WindowState.Maximized);
+            CloseCommand = new RelayCommand(() => window.Close());
+            MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(_window, GetMousePosition()));
+
+            //fix window resize
+            var resizer = new WindowResizer(_window);
         }
 
-        private async void LoginExecute()
+        private Point GetMousePosition()
         {
-            var loginRequest = new LoginRequest(Login, Password);
-            var result = await _userService.Login(loginRequest);
-            _settingsService.Current.LoginResult = result;
-            if (result == null)
-            {
-                throw new Exception(nameof(result));
-            }
-        }
-
-        private async void GetAccountTypesExecute()
-        {
-            var result = await _accountService.GetAccountTypesAsync();
-            foreach (var item in result)
-            {
-                AccountTypes.Add(item);
-            }
+            var position = Mouse.GetPosition(_window);
+            return new Point(position.X + _window.Left, position.Y + _window.Top);
         }
     }
 }

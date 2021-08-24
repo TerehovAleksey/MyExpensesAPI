@@ -8,7 +8,7 @@ namespace MyExpenses.WpfClient
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = DI.Get<MainWindowViewModel>();
+            DataContext = new MainWindowViewModel(this);
         }
     }
 }

@@ -23,15 +23,16 @@ namespace MyExpenses.WpfClient
             builder.RegisterType<AssemblyService>().As<IAssemblyService>().SingleInstance();
             // настройки приложения
             builder.RegisterType<SettingsService>().As<ISettingsService>().SingleInstance();
-
+            // данные для http-клиента
             builder.RegisterType<HttpInitData>().As<IHttpInitData>();
-
+            // сервисы
             builder.RegisterType<AccountService>().As<IAccountService>();
             builder.RegisterType<UserService>().As<IUserService>();
-
-
-
-            builder.RegisterType<MainWindowViewModel>();
+            // приложение
+            builder.RegisterType<ApplicationService>().As<IApplicationService>().SingleInstance();
+            builder.RegisterType<LoginViewModel>();
+            builder.RegisterType<SettingsViewModel>();
+            builder.RegisterType<DashboardViewModel>();
 
             Container = builder.Build();
         }
@@ -47,5 +48,10 @@ namespace MyExpenses.WpfClient
         /// Настройки приложения
         /// </summary>
         public static ISettingsService Settings => Get<ISettingsService>();
+
+        /// <summary>
+        /// Основное окно приложения
+        /// </summary>
+        public static IApplicationService Application => Get<IApplicationService>();
     }
 }

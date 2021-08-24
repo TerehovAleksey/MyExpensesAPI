@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Color x:Key="BackgroundLight">#EFEFEF</Color>
+    <Color x:Key="Primary">#3C5670</Color>
+    <Color x:Key="Accent">#F68731</Color>
+    <Color x:Key="Foreground">#686868</Color>
+    <Color x:Key="ForegroundDark">#000000</Color>
+    <Color x:Key="ForegroundLight">#FFFFFF</Color>
+    <Color x:Key="Red">Red</Color>
+
+    <SolidColorBrush x:Key="BackgroundLightBrush" Color="{StaticResource BackgroundLight}"/>
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
+    <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource Accent}"/>
+    <SolidColorBrush x:Key="ForegroundBrush" Color="{StaticResource Foreground}"/>
+    <SolidColorBrush x:Key="ForegroundDarkBrush" Color="{StaticResource ForegroundDark}"/>
+    <SolidColorBrush x:Key="ForegroundLightBrush" Color="{StaticResource ForegroundLight}"/>
+    <SolidColorBrush x:Key="RedBrush" Color="{StaticResource Red}"/>
+</ResourceDictionary>
