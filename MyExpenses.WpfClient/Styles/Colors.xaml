@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Color x:Key="BackgroundLight">#EFEFEF</Color>
     <Color x:Key="Primary">#3C5670</Color>
+    <Color x:Key="PrimaryLight">#5C7690</Color>
     <Color x:Key="Accent">#F68731</Color>
     <Color x:Key="Foreground">#686868</Color>
     <Color x:Key="ForegroundDark">#000000</Color>
@@ -10,6 +11,7 @@
 
     <SolidColorBrush x:Key="BackgroundLightBrush" Color="{StaticResource BackgroundLight}"/>
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
+    <SolidColorBrush x:Key="PrimaryLightBrush" Color="{StaticResource PrimaryLight}"/>
     <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource Accent}"/>
     <SolidColorBrush x:Key="ForegroundBrush" Color="{StaticResource Foreground}"/>
     <SolidColorBrush x:Key="ForegroundDarkBrush" Color="{StaticResource ForegroundDark}"/>

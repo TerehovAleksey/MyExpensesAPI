@@ -6,7 +6,7 @@ namespace MyExpenses.WpfClient.Services
     {
         private GeneralPageType previousPage = GeneralPageType.None;
 
-        private GeneralPageType currentPage = GeneralPageType.Login;
+        private GeneralPageType currentPage = GeneralPageType.Dashboard;
         public GeneralPageType CurrentPage { get => currentPage; private set => Set(ref currentPage, value); }
 
         public bool CanGoBack { get; private set; }

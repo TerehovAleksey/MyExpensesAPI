@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <MinimumPlatformVersion>7.0</MinimumPlatformVersion>
-    <ApplicationIcon></ApplicationIcon>
+    <ApplicationIcon>D:\Repositories\MyExpensesAPI\MyExpenses.WpfClient\Resources\Images\icon-t.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,10 +29,12 @@
     <PackageReference Include="AutofacSerilogIntegration" Version="5.0.0" />
     <PackageReference Include="Serilog" Version="2.10.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    <PackageReference Include="SharpVectors" Version="1.7.6" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MyExpenses.ClientCore\MyExpenses.ClientCore.csproj" />
+    <ProjectReference Include="..\MyExpenses.WpfClient.Controls\MyExpenses.WpfClient.Controls.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -60,6 +62,10 @@
     <Resource Include="Resources\Images\icon.ico" />
     <Resource Include="Resources\Images\icon.png" />
     <Resource Include="Resources\Images\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\Icons\" />
   </ItemGroup>
 
 </Project>
